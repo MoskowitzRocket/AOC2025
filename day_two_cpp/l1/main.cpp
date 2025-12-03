@@ -8,7 +8,7 @@
 
 std::vector<std::string> split(const std::string &s, char delimiter);
 
-int checkString(std::string s);
+long long checkString(std::string s);
 
 
 
@@ -44,14 +44,14 @@ int main() {
 
     for (int i = 0; i < all_temps.size(); ++i)
     {
-        // std::cout << all_temps[i][0] << "-" << all_temps[i][1] << std::endl;
-        long long lower = std::stoi(all_temps[i][0]);
-        long long upper = std::stoi(all_temps[i][1]);
+        std::cout << all_temps[i][0] << "-" << all_temps[i][1] << std::endl;
+        long long lower = std::stoll(all_temps[i][0]);
+        long long upper = std::stoll(all_temps[i][1]);
 
         for (long long j = lower; j <= upper; j++)
 {
     // Call checkString only once and store the result
-    int checkResult = checkString(std::to_string(j));
+    long long checkResult = checkString(std::to_string(j));
 
     // Optional: Reduce debug output for performance
     if (j % 1000 == 0) // Print every 1000th iteration
@@ -81,7 +81,7 @@ std::vector<std::string> split(const std::string &s, char delimiter)
 	return tokens;
 }
 
-int checkString(std::string s)
+long long checkString(std::string s)
 {
     int n = s.size();
 
@@ -108,7 +108,7 @@ int checkString(std::string s)
         }
 
         if (ok)
-            return std::stoi(s);
+            return std::stoll(s);
     // }
 
     return 0;

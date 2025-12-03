@@ -50,14 +50,9 @@ int main() {
 
         for (long long j = lower; j <= upper; j++)
 {
-    // Call checkString only once and store the result
     long long checkResult = checkString(std::to_string(j));
 
-    // Optional: Reduce debug output for performance
-    if (j % 1000 == 0) // Print every 1000th iteration
-    {
-        std::cout << "J: " << j << "\tCheck Result: " << checkResult << std::endl;
-    }
+    // std::cout << "J: " << j << "\tCheck Result: " << checkResult << std::endl;
 
     result += checkResult;
 }
@@ -86,14 +81,14 @@ long long checkString(std::string s)
     int n = s.size();
 
     // length-1 numbers cannot be repeating patterns
-    // if (n <= 1) return 0;
-    if (n % 2 != 0) return 0;
+    if (n <= 1) return 0;
+    // if (n % 2 != 0) return 0;
 
     // Try all possible pattern lengths
-    // for (int len = 1; len <= n / 2; ++len)
-    int len = n / 2;
-    // {
-        // if (n % len != 0) continue;
+    for (int len = 1; len <= n / 2; ++len)
+    // int len = n / 2;
+    {
+        if (n % len != 0) continue;
 
         std::string pattern = s.substr(0, len);
         bool ok = true;
@@ -109,7 +104,7 @@ long long checkString(std::string s)
 
         if (ok)
             return std::stoll(s);
-    // }
+    }
 
     return 0;
 }
